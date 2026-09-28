@@ -10,7 +10,7 @@ load_dotenv()
 api_key=os.getenv("GEMINI_API_KEY")
 
 #Create Gemini clinet
-clinet=genai.client(api_key=api_key)
+clinet=genai.Client(api_key=api_key)
 
 #Page Configuration
 st.set_page_config(
@@ -35,7 +35,7 @@ if st.button("Generate Response"):
         with st.spinner("Gemini is thinking..."):
             response=clinet.models.generate_content(
                 model="gemini-3.5-flash-lite",
-                content=prompt
+                contents=prompt
             )
             st.success("Response genereted!")
             st.write(response.text)
